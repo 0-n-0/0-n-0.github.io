@@ -4,15 +4,36 @@
   <meta charset="utf-8">
   
   
-  <title>Hexo</title>
+  <title>ChatGPT在CTF新手学习及解题中的应用 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="前言对ai比较感兴趣，前些时候弄到了一个ChatGPT账号，最近又申请成功了New Bing。受一些文章和视频的启发，最近在探索各种利用方式，尤其是作为学习工具的一方面。我认为对于像我这种ctf初学者，它可以作为一个很好的学习工具或是解题工具。 一、一些基本知识和技巧1.部分用法： 解答具体的问题，如：    给出关键词收集汇总各种资料，或是写一些书籍的概要，简单的思政、选修课作业等。如：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ChatGPT在CTF新手学习及解题中的应用">
+<meta property="og:url" content="http://example.com/2023/05/06/ChatGPT%E5%9C%A8CTF%E6%96%B0%E6%89%8B%E5%AD%A6%E4%B9%A0%E5%8F%8A%E8%A7%A3%E9%A2%98%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言对ai比较感兴趣，前些时候弄到了一个ChatGPT账号，最近又申请成功了New Bing。受一些文章和视频的启发，最近在探索各种利用方式，尤其是作为学习工具的一方面。我认为对于像我这种ctf初学者，它可以作为一个很好的学习工具或是解题工具。 一、一些基本知识和技巧1.部分用法： 解答具体的问题，如：    给出关键词收集汇总各种资料，或是写一些书籍的概要，简单的思政、选修课作业等。如：">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34855286/1677666883837-ccdf8406-95d4-4c40-8339-f7a6a77c8287.png#averageHue=%237d8990&clientId=ub5068403-5e53-4&from=paste&height=203&id=u610a5650&originHeight=519&originWidth=1076&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=116752&status=done&style=none&taskId=u01b06cda-d6d8-4e39-bf7a-2c549d48d07&title=&width=420.3333435058594">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34855286/1677660856905-77d46fee-6ca7-4433-b149-273ffd122836.png#averageHue=%23909ba1&clientId=ub5068403-5e53-4&from=paste&height=218&id=u8f0b3e03&originHeight=632&originWidth=1217&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=290856&status=done&style=none&taskId=u1d3eabf6-ab16-4168-8019-104e17362b1&title=&width=419">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34855286/1677662609163-c985d3c6-3b47-4794-a40b-16b7aeb2d7de.png#averageHue=%2331be81&clientId=ub5068403-5e53-4&from=paste&height=110&id=udb2fe8ff&originHeight=275&originWidth=1066&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=85516&status=done&style=none&taskId=ud30751ac-6fc8-4c3f-86ed-98321d95142&title=&width=427.66668701171875">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34855286/1677662586317-4bf88a1e-1889-4f8c-824d-3ed5379e2eae.png#averageHue=%235b7d7b&clientId=ub5068403-5e53-4&from=paste&height=144&id=u1ba70d4a&originHeight=357&originWidth=1060&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=87368&status=done&style=none&taskId=uabc883c6-0d38-41d7-b23c-56f2deefedb&title=&width=426.66668701171875">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34855286/1677695945013-6b74b47a-813a-457f-8b9d-2c3fc9e94d5e.png#averageHue=%23e1e2e5&clientId=ub5068403-5e53-4&from=paste&height=496&id=u796f76ba&originHeight=982&originWidth=1065&originalType=binary&ratio=1.5&rotation=0&showTitle=true&size=298833&status=done&style=none&taskId=ucc9d5dd5-5ea0-401f-9f9f-b9613a08dcb&title=%E6%9C%AC%E6%96%87%E5%8F%AA%E6%98%AF%E6%8E%A2%E8%AE%A8%E4%BD%9C%E4%B8%BA%E4%B8%80%E7%A7%8D%E5%AD%A6%E4%B9%A0%E5%B7%A5%E5%85%B7%E7%9A%84%E5%90%88%E6%B3%95%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F%EF%BC%88%E5%8F%A0%E7%94%B2%EF%BC%89&width=538">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34855286/1677687993401-777bdce4-d6b9-47ec-97c6-0662cec8f261.png#averageHue=%23fefefe&clientId=ub5068403-5e53-4&from=paste&height=157&id=u17ec89e8&originHeight=367&originWidth=979&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=57992&status=done&style=none&taskId=u6c01884d-9662-48c8-88d4-96e68352631&title=&width=417.66668701171875">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34855286/1677688552737-a3843559-bee9-49b6-9099-53c2cc362fef.png#averageHue=%23e8e9eb&clientId=ub5068403-5e53-4&from=paste&height=277&id=ua049795b&originHeight=596&originWidth=1107&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=161961&status=done&style=none&taskId=ub2c9a439-75a3-4b63-be2a-e335a75c62e&title=&width=515">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34855286/1677688280277-15834f29-36f3-4dce-b830-7bd19bf3af17.png#averageHue=%23e4e5e8&clientId=ub5068403-5e53-4&from=paste&height=214&id=u69533a9d&originHeight=447&originWidth=1077&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=143711&status=done&style=none&taskId=u60839d5f-3e83-4c75-9ad7-4828675e82c&title=&width=515">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34855286/1677689466354-806741fe-7032-4b3a-8d82-678a3c6ac7cd.png#averageHue=%23fefefe&clientId=ub5068403-5e53-4&from=paste&height=185&id=ub9b2fcba&originHeight=377&originWidth=1057&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=61630&status=done&style=none&taskId=u1b442d93-b785-4c07-b010-b0f6a2f8993&title=&width=517.6666870117188">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34855286/1677689512281-eaa64316-29f7-4972-a673-e751b11f5562.png#averageHue=%23e3e4e7&clientId=ub5068403-5e53-4&from=paste&height=466&id=u2a51c8e7&originHeight=914&originWidth=1167&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=324434&status=done&style=none&taskId=u1e2626bb-b45d-400e-8400-463bb03cd8d&title=&width=595">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34855286/1677692578375-44582cef-7e66-4b3e-950a-a477efd7407b.png#averageHue=%2331be81&clientId=ub5068403-5e53-4&from=paste&height=249&id=u577a5ba8&originHeight=510&originWidth=1191&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=85371&status=done&style=none&taskId=u052abf59-dde8-47cc-a98e-c8fd5628ccf&title=&width=581">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34855286/1677692727234-915bf51c-c57c-4768-8aa0-b1c65527d8bd.png#averageHue=%23efeff1&clientId=ub5068403-5e53-4&from=paste&height=128&id=u782be7fb&originHeight=226&originWidth=1064&originalType=binary&ratio=1.5&rotation=0&showTitle=true&size=28963&status=done&style=none&taskId=u23a5c585-761c-4972-a0b8-ce099771042&title=%E6%AF%AB%E6%97%A0%E5%85%B3%E7%B3%BB&width=602.3333740234375">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34855286/1677692919452-af688a0e-5e50-41d9-970f-78160b8085ef.png#averageHue=%23e1fde0&clientId=ub5068403-5e53-4&from=paste&height=239&id=uadae6a4d&originHeight=426&originWidth=1078&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=54762&status=done&style=none&taskId=u57cb6905-c08a-4337-9d38-727d7f21a20&title=&width=603.6666870117188">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34855286/1677692871716-9a16d5e7-8e01-4b99-bdb3-2971cb5e83a2.png#averageHue=%2328ac8c&clientId=ub5068403-5e53-4&from=paste&height=201&id=ua0ced650&originHeight=361&originWidth=1090&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=62576&status=done&style=none&taskId=u20f8a450-ef6b-4131-a020-9a8170bf675&title=&width=605.6666870117188">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34855286/1677695225127-e2fcd458-fdad-4da4-bcc0-e3e9a65a9910.png#averageHue=%230b684f&clientId=ub5068403-5e53-4&from=paste&height=694&id=u368ef635&originHeight=1310&originWidth=830&originalType=url&ratio=1.5&rotation=0&showTitle=false&size=220318&status=done&style=none&taskId=ubd98837d-c7f5-476f-ba2b-e0ccc5faeb7&title=&width=440">
+<meta property="article:published_time" content="2023-05-06T10:29:47.000Z">
+<meta property="article:modified_time" content="2023-05-06T10:30:24.456Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="tricks">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2023/png/34855286/1677666883837-ccdf8406-95d4-4c40-8339-f7a6a77c8287.png#averageHue=%237d8990&clientId=ub5068403-5e53-4&from=paste&height=203&id=u610a5650&originHeight=519&originWidth=1076&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=116752&status=done&style=none&taskId=u01b06cda-d6d8-4e39-bf7a-2c549d48d07&title=&width=420.3333435058594">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -69,9 +90,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-ChatGPT在CTF新手学习及解题中的应用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-ChatGPT在CTF新手学习及解题中的应用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/05/06/ChatGPT%E5%9C%A8CTF%E6%96%B0%E6%89%8B%E5%AD%A6%E4%B9%A0%E5%8F%8A%E8%A7%A3%E9%A2%98%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/" class="article-date">
   <time class="dt-published" datetime="2023-05-06T10:29:47.000Z" itemprop="datePublished">2023-05-06</time>
@@ -84,8 +103,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/05/06/ChatGPT%E5%9C%A8CTF%E6%96%B0%E6%89%8B%E5%AD%A6%E4%B9%A0%E5%8F%8A%E8%A7%A3%E9%A2%98%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/">ChatGPT在CTF新手学习及解题中的应用</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      ChatGPT在CTF新手学习及解题中的应用
     </h1>
   
 
@@ -137,53 +156,19 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-图片测试" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/05/04/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/" class="article-date">
-  <time class="dt-published" datetime="2023-05-04T14:38:49.000Z" itemprop="datePublished">2023-05-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/05/04/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/">图片测试</a>
-    </h1>
+    <a href="/2023/05/04/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">图片测试</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><img src="/images/t.png"></p>
-<p>图片测试1</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/05/04/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/" data-id="clh98qvff0000pc3cgmk40inv" data-title="图片测试" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/" rel="tag">test</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
 
 
 </section>
